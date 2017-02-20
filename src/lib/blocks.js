@@ -163,6 +163,24 @@ module.exports = function (vm) {
             });
         }
     };
+    
+    var oParser = new DOMParser();
+    var dom = oParser.parseFromString(ScratchBlocks.Blocks.defaultToolbox, 'text/xml');
+    
+    dom.documentElement.innerHTML = dom.documentElement.innerHTML +
+        '<category name="Scratch Extended" colour="#D3D3D3" secondaryColour="#C0C0C0">'+
+            '<block type="motion_movesteps">'+
+                '<value name="VARIABLE">'+
+                    '<shadow type="text">'+
+                        '<field name="TEXT"></field>'+
+                    '</shadow>'+
+                '</value>'+
+            '</block>'+
+        '</category>';
+    
+    var div = dom.createElement("DIV");
+    div.appendChild(dom.documentElement);
+    ScratchBlocks.Blocks.defaultToolbox = div.innerHTML;
 
     return ScratchBlocks;
 };
