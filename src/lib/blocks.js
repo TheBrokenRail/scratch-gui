@@ -139,7 +139,7 @@ module.exports = function (vm) {
     
     ScratchBlocks.Colours.mod.tertiary = "#A9A9A9";
     
-    ScratchBlocks.Blocks['data_variable'] = {
+    ScratchBlocks.Blocks['mod_get_variable_by_name'] = {
         /**
          * Block of Variables
          * @this Blockly.Block
