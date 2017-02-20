@@ -129,7 +129,7 @@ module.exports = function (vm) {
         this.jsonInit(json);
     };
     
-    ScratchBlocks.Categories.mod = olourst(); = new Object();
+    ScratchBlocks.Categories.mod = new Object();
     
     ScratchBlocks.Colours.mod = new Object();
     
@@ -168,8 +168,8 @@ module.exports = function (vm) {
     var dom = oParser.parseFromString(ScratchBlocks.Blocks.defaultToolbox, 'text/xml');
     
     dom.documentElement.innerHTML = dom.documentElement.innerHTML +
-        '<category name="Scratch Extended" colour="#D3D3D3" secondaryColour="#C0C0C0">'+
-            '<block type="motion_movesteps">'+
+        '<category name="Scratch+" colour="#D3D3D3" secondaryColour="#C0C0C0">'+
+            '<block type="mod_get_variable_by_name">'+
                 '<value name="VARIABLE">'+
                     '<shadow type="text">'+
                         '<field name="TEXT"></field>'+
