@@ -128,6 +128,41 @@ module.exports = function (vm) {
         ]);
         this.jsonInit(json);
     };
+    
+    ScratchBlocks.Categories.mod = olourst(); = new Object();
+    
+    ScratchBlocks.Colours.mod = new Object();
+    
+    ScratchBlocks.Colours.mod.primary = "#D3D3D3";
+    
+    ScratchBlocks.Colours.mod.secondary = "#C0C0C0";
+    
+    ScratchBlocks.Colours.mod.tertiary = "#A9A9A9";
+    
+    ScratchBlocks.Blocks['data_variable'] = {
+        /**
+         * Block of Variables
+         * @this Blockly.Block
+         */
+        init: function() {
+            this.jsonInit({
+                "message0": "get variable %1",
+                "args0": [
+                    {
+                        "type": "input_value",
+                        "name": "VARIABLE"
+                    }
+                ],
+                "category": ScratchBlocks.Categories.mod,
+                "colour": ScratchBlocks.Colours.mod.primary,
+                "colourSecondary": ScratchBlocks.Colours.mod.secondary,
+                "colourTertiary": ScratchBlocks.Colours.mod.tertiary,
+                "output": "String",
+                "outputShape": ScratchBlocks.OUTPUT_SHAPE_ROUND,
+                "checkboxInFlyout": false
+            });
+        }
+    };
 
     return ScratchBlocks;
 };
