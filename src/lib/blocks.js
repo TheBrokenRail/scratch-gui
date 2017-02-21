@@ -365,6 +365,11 @@ module.exports = function (vm) {
         }
         return penState.shade;
     };
+    
+    vm.runtime._primitives.mod_set_variable_by_name = function (args, util) {
+        var variable = util.target.lookupOrCreateVariable(args.VARIABLE);
+        variable.value = args.TO;
+    };
 
     return ScratchBlocks;
 };
