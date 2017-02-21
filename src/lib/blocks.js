@@ -370,6 +370,22 @@ module.exports = function (vm) {
         var variable = util.target.lookupOrCreateVariable(args.VARIABLE);
         variable.value = args.TO;
     };
+    
+    vm.runtime._primitives.mod_change_variable_by_name = function (args, util) {
+        function toNumber(value) {
+            var n = Number(value);
+            if (isNaN(n)) {
+                // Scratch treats NaN as 0, when needed as a number.
+                // E.g., 0 + NaN -> 0.
+                return 0;
+            }
+            return n;
+        }
+        var variable = util.target.lookupOrCreateVariable(args.VARIABLE);
+        var castedValue = toNumber(variable.value);
+        var dValue = toNumber(args.BY);
+        variable.value = castedValue + dValue;
+    };
 
     return ScratchBlocks;
 };
