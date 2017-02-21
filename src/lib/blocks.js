@@ -326,8 +326,8 @@ module.exports = function (vm) {
                     '</shadow>'+
                 '</value>'+
                 '<value name="BY">'+
-                    '<shadow type="text">'+
-                        '<field name="TEXT"></field>'+
+                    '<shadow type="math_number">'+
+                        '<field name="NUM">0</field>'+
                     '</shadow>'+
                 '</value>'+
             '</block>'+
@@ -353,7 +353,7 @@ module.exports = function (vm) {
     vm.runtime._primitives.mod_pen_hue = function (args, util) {
         var penState = util.target.getCustomState('Scratch.pen');
         if (!penState) {
-            return false;
+            return 120;
         }
         return penState.hue;
     };
@@ -361,7 +361,7 @@ module.exports = function (vm) {
     vm.runtime._primitives.mod_pen_shade = function (args, util) {
         var penState = util.target.getCustomState('Scratch.pen');
         if (!penState) {
-            return false;
+            return 50;
         }
         return penState.shade;
     };
