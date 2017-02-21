@@ -291,8 +291,6 @@ module.exports = function (vm) {
             this.jsonInit({
                 "message0": "while %1",
                 "message1": "%1",
-                "message2": "%1",
-                "lastDummyAlign2": "RIGHT",
                 "args0": [
                     {
                         "type": "input_value",
@@ -306,17 +304,35 @@ module.exports = function (vm) {
                         "name": "SUBSTACK"
                     }
                 ],
-                "args2": [
-                    {
-                        "type": "field_image",
-                        "src": Blockly.mainWorkspace.options.pathToMedia + "/c_arrow.svg",
-                        "width": 16,
-                        "height": 16,
-                        "alt": "*",
-                        "flip_rtl": true
-                    }
-                ],
                 "inputsInline": true,
+                "category": ScratchBlocks.Categories.mod,
+                "colour": ScratchBlocks.Colours.mod.primary,
+                "colourSecondary": ScratchBlocks.Colours.mod.secondary,
+                "colourTertiary": ScratchBlocks.Colours.mod.tertiary,
+                "previousStatement": null,
+                "nextStatement": null
+            });
+        }
+    };
+    
+    ScratchBlocks.Blocks['mod_true'] = {
+        init: function() {
+            this.jsonInit({
+                "message0": "true",
+                "category": ScratchBlocks.Categories.mod,
+                "colour": ScratchBlocks.Colours.mod.primary,
+                "colourSecondary": ScratchBlocks.Colours.mod.secondary,
+                "colourTertiary": ScratchBlocks.Colours.mod.tertiary,
+                "previousStatement": null,
+                "nextStatement": null
+            });
+        }
+    };
+    
+    ScratchBlocks.Blocks['mod_false'] = {
+        init: function() {
+            this.jsonInit({
+                "message0": "false",
                 "category": ScratchBlocks.Categories.mod,
                 "colour": ScratchBlocks.Colours.mod.primary,
                 "colourSecondary": ScratchBlocks.Colours.mod.secondary,
@@ -389,6 +405,8 @@ module.exports = function (vm) {
                 '</value>'+
             '</block>'+
             '<block type="mod_while"></block>'+
+            '<block type="mod_true"></block>'+
+            '<block type="mod_false"></block>'+
         '</category>';
     
     var div = dom.createElement("DIV");
@@ -477,6 +495,14 @@ module.exports = function (vm) {
         if (condition) {
             util.startBranch(1, true);
         }
+    };
+    
+    vm.runtime._primitives.mod_true = function (args, util) {
+        return true;
+    };
+    
+    vm.runtime._primitives.mod_false = function (args, util) {
+        return false;
     };
 
     return ScratchBlocks;
