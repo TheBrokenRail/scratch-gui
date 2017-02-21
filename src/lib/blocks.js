@@ -307,6 +307,30 @@ module.exports = function (vm) {
             '</block>'+
             '<block type="mod_pen_hue"></block>'+
             '<block type="mod_pen_shade"></block>'+
+            '<block type="mod_set_variable_by_name">'+
+                '<value name="VARIABLE">'+
+                    '<shadow type="text">'+
+                        '<field name="TEXT"></field>'+
+                    '</shadow>'+
+                '</value>'+
+                '<value name="TO">'+
+                    '<shadow type="text">'+
+                        '<field name="TEXT"></field>'+
+                    '</shadow>'+
+                '</value>'+
+            '</block>'+
+            '<block type="mod_change_variable_by_name">'+
+                '<value name="VARIABLE">'+
+                    '<shadow type="text">'+
+                        '<field name="TEXT"></field>'+
+                    '</shadow>'+
+                '</value>'+
+                '<value name="BY">'+
+                    '<shadow type="text">'+
+                        '<field name="TEXT"></field>'+
+                    '</shadow>'+
+                '</value>'+
+            '</block>'+
         '</category>';
     
     var div = dom.createElement("DIV");
