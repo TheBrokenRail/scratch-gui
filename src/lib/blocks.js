@@ -257,6 +257,8 @@ module.exports = function (vm) {
                     '</shadow>'+
                 '</value>'+
             '</block>'+
+            '<block type="mod_pen_hue"></block>'+
+            '<block type="mod_pen_shade"></block>'+
         '</category>';
     
     var div = dom.createElement("DIV");
@@ -274,6 +276,22 @@ module.exports = function (vm) {
         args.B = Math.round(args.B);
         args.A = Math.round(args.A);
         return (args.A * 16777216) + (args.R * 65536) + (args.G * 255) + args.B;
+    };
+    
+    vm.runtime._primitives.mod_pen_hue = function (args, util) {
+        var penState = util.target.getCustomState('Scratch.pen');
+        if (!penState) {
+            return false;
+        }
+        return penState.hue;
+    };
+    
+    vm.runtime._primitives.mod_pen_shade = function (args, util) {
+        var penState = util.target.getCustomState('Scratch.pen');
+        if (!penState) {
+            return false;
+        }
+        return penState.shade;
     };
 
     return ScratchBlocks;
