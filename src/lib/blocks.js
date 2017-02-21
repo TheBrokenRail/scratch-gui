@@ -286,6 +286,47 @@ module.exports = function (vm) {
         }
     };
     
+    ScratchBlocks.Blocks['mod_while'] = {
+        init: function() {
+            this.jsonInit({
+                "message0": "while %1",
+                "message1": "%1",
+                "message2": "%1",
+                "lastDummyAlign2": "RIGHT",
+                "args0": [
+                    {
+                        "type": "input_value",
+                        "name": "CONDITION",
+                        "check": "Boolean"
+                    }
+                ],
+                "args1": [
+                    {
+                        "type": "input_statement",
+                        "name": "SUBSTACK"
+                    }
+                ],
+                "args2": [
+                    {
+                        "type": "field_image",
+                        "src": Blockly.mainWorkspace.options.pathToMedia + "/c_arrow.svg",
+                        "width": 16,
+                        "height": 16,
+                        "alt": "*",
+                        "flip_rtl": true
+                    }
+                ],
+                "inputsInline": true,
+                "category": ScratchBlocks.Categories.mod,
+                "colour": ScratchBlocks.Colours.mod.primary,
+                "colourSecondary": ScratchBlocks.Colours.mod.secondary,
+                "colourTertiary": ScratchBlocks.Colours.mod.tertiary,
+                "previousStatement": null,
+                "nextStatement": null
+            });
+        }
+    };
+    
     var oParser = new DOMParser();
     var dom = oParser.parseFromString(ScratchBlocks.Blocks.defaultToolbox, 'text/xml');
     
@@ -347,6 +388,7 @@ module.exports = function (vm) {
                     '</shadow>'+
                 '</value>'+
             '</block>'+
+            '<block type="mod_while"></block>'+
         '</category>';
     
     var div = dom.createElement("DIV");
@@ -409,6 +451,32 @@ module.exports = function (vm) {
         var castedValue = toNumber(variable.value);
         var dValue = toNumber(args.BY);
         variable.value = castedValue + dValue;
+    };
+    
+    vm.runtime._primitives.mod_while = function (args, util) {
+        function toBoolean(value) {
+            // Already a boolean?
+            if (typeof value === 'boolean') {
+                return value;
+            }
+            if (typeof value === 'string') {
+                // These specific strings are treated as false in Scratch.
+                if ((value === '') ||
+                    (value === '0') ||
+                    (value.toLowerCase() === 'false')) {
+                    return false;
+                }
+                // All other strings treated as true.
+                return true;
+            }
+            // Coerce other values and numbers.
+            return Boolean(value);
+        }
+        var condition = toBoolean(args.CONDITION);
+        // If the condition is true, start the branch.
+        if (condition) {
+            util.startBranch(1, true);
+        }
     };
 
     return ScratchBlocks;
