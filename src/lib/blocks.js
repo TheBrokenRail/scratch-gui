@@ -223,6 +223,54 @@ module.exports = function (vm) {
         }
     };
     
+    ScratchBlocks.Blocks['mod_set_variable_by_name'] = {
+        init: function() {
+            this.jsonInit({
+                "message0": "set variable %1 to %2",
+                "args0": [
+                    {
+                        "type": "input_value",
+                        "name": "VARIABLE"
+                    },
+                    {
+                        "type": "input_value",
+                        "name": "TO"
+                    }
+                ],
+                "category": ScratchBlocks.Categories.mod,
+                "colour": ScratchBlocks.Colours.mod.primary,
+                "colourSecondary": ScratchBlocks.Colours.mod.secondary,
+                "colourTertiary": ScratchBlocks.Colours.mod.tertiary,
+                "previousStatement": null,
+                "nextStatement": null
+            });
+        }
+    };
+    
+    ScratchBlocks.Blocks['mod_change_variable_by_name'] = {
+        init: function() {
+            this.jsonInit({
+                "message0": "change variable %1 by %2",
+                "args0": [
+                    {
+                        "type": "input_value",
+                        "name": "VARIABLE"
+                    },
+                    {
+                        "type": "input_value",
+                        "name": "BY"
+                    }
+                ],
+                "category": ScratchBlocks.Categories.mod,
+                "colour": ScratchBlocks.Colours.mod.primary,
+                "colourSecondary": ScratchBlocks.Colours.mod.secondary,
+                "colourTertiary": ScratchBlocks.Colours.mod.tertiary,
+                "previousStatement": null,
+                "nextStatement": null
+            });
+        }
+    };
+    
     var oParser = new DOMParser();
     var dom = oParser.parseFromString(ScratchBlocks.Blocks.defaultToolbox, 'text/xml');
     
