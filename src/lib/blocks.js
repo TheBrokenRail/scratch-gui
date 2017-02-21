@@ -140,10 +140,6 @@ module.exports = function (vm) {
     ScratchBlocks.Colours.mod.tertiary = "#A9A9A9";
     
     ScratchBlocks.Blocks['mod_get_variable_by_name'] = {
-        /**
-         * Block of Variables
-         * @this Blockly.Block
-         */
         init: function() {
             this.jsonInit({
                 "message0": "get variable %1",
@@ -151,6 +147,39 @@ module.exports = function (vm) {
                     {
                         "type": "input_value",
                         "name": "VARIABLE"
+                    }
+                ],
+                "category": ScratchBlocks.Categories.mod,
+                "colour": ScratchBlocks.Colours.mod.primary,
+                "colourSecondary": ScratchBlocks.Colours.mod.secondary,
+                "colourTertiary": ScratchBlocks.Colours.mod.tertiary,
+                "output": "String",
+                "outputShape": ScratchBlocks.OUTPUT_SHAPE_ROUND,
+                "checkboxInFlyout": false
+            });
+        }
+    };
+    
+    ScratchBlocks.Blocks['mod_rgba'] = {
+        init: function() {
+            this.jsonInit({
+                "message0": "r: %1 g: %2 b: %3 a: %4",
+                "args0": [
+                    {
+                        "type": "input_value",
+                        "name": "R"
+                    },
+                    {
+                        "type": "input_value",
+                        "name": "G"
+                    },
+                    {
+                        "type": "input_value",
+                        "name": "B"
+                    },
+                    {
+                        "type": "input_value",
+                        "name": "A"
                     }
                 ],
                 "category": ScratchBlocks.Categories.mod,
@@ -176,6 +205,28 @@ module.exports = function (vm) {
                     '</shadow>'+
                 '</value>'+
             '</block>'+
+            '<block type="mod_rgba">'+
+                '<value name="R">'+
+                    '<shadow type="text">'+
+                        '<field name="TEXT"></field>'+
+                    '</shadow>'+
+                '</value>'+
+                '<value name="G">'+
+                    '<shadow type="text">'+
+                        '<field name="TEXT"></field>'+
+                    '</shadow>'+
+                '</value>'+
+                '<value name="B">'+
+                    '<shadow type="text">'+
+                        '<field name="TEXT"></field>'+
+                    '</shadow>'+
+                '</value>'+
+                '<value name="A">'+
+                    '<shadow type="text">'+
+                        '<field name="TEXT"></field>'+
+                    '</shadow>'+
+                '</value>'+
+            '</block>'+
         '</category>';
     
     var div = dom.createElement("DIV");
@@ -185,6 +236,14 @@ module.exports = function (vm) {
     vm.runtime._primitives.mod_get_variable_by_name = function (args, util) {
         var variable = util.target.lookupOrCreateVariable(args.VARIABLE);
         return variable.value;
+    };
+    
+    vm.runtime._primitives.mod_rgba = function (args, util) {
+        args.R = Math.round(args.R);
+        args.G = Math.round(args.G);
+        args.B = Math.round(args.B);
+        args.A = Math.round(args.A);
+        return (args.A * 16777216) + (args.R * 65536) + (args.G * 255) + args.B;
     };
 
     return ScratchBlocks;
