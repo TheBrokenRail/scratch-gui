@@ -223,6 +223,21 @@ module.exports = function (vm) {
         }
     };
     
+    ScratchBlocks.Blocks['mod_pen_size'] = {
+        init: function() {
+            this.jsonInit({
+                "message0": "pen size",
+                "category": ScratchBlocks.Categories.mod,
+                "colour": ScratchBlocks.Colours.mod.primary,
+                "colourSecondary": ScratchBlocks.Colours.mod.secondary,
+                "colourTertiary": ScratchBlocks.Colours.mod.tertiary,
+                "output": "String",
+                "outputShape": ScratchBlocks.OUTPUT_SHAPE_ROUND,
+                "checkboxInFlyout": false
+            });
+        }
+    };
+    
     ScratchBlocks.Blocks['mod_set_variable_by_name'] = {
         init: function() {
             this.jsonInit({
@@ -307,6 +322,7 @@ module.exports = function (vm) {
             '</block>'+
             '<block type="mod_pen_hue"></block>'+
             '<block type="mod_pen_shade"></block>'+
+            '<block type="mod_pen_size"></block>'+
             '<block type="mod_set_variable_by_name">'+
                 '<value name="VARIABLE">'+
                     '<shadow type="text">'+
@@ -364,6 +380,14 @@ module.exports = function (vm) {
             return 50;
         }
         return penState.shade;
+    };
+    
+    vm.runtime._primitives.mod_pen_shade = function (args, util) {
+        var penState = util.target.getCustomState('Scratch.pen');
+        if (!penState) {
+            return 1;
+        }
+        return penState.penAttributes.diameter;
     };
     
     vm.runtime._primitives.mod_set_variable_by_name = function (args, util) {
