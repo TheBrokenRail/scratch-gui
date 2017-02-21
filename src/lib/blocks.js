@@ -193,6 +193,36 @@ module.exports = function (vm) {
         }
     };
     
+    ScratchBlocks.Blocks['mod_pen_hue'] = {
+        init: function() {
+            this.jsonInit({
+                "message0": "pen hue",
+                "category": ScratchBlocks.Categories.mod,
+                "colour": ScratchBlocks.Colours.mod.primary,
+                "colourSecondary": ScratchBlocks.Colours.mod.secondary,
+                "colourTertiary": ScratchBlocks.Colours.mod.tertiary,
+                "output": "String",
+                "outputShape": ScratchBlocks.OUTPUT_SHAPE_ROUND,
+                "checkboxInFlyout": false
+            });
+        }
+    };
+    
+    ScratchBlocks.Blocks['mod_pen_shade'] = {
+        init: function() {
+            this.jsonInit({
+                "message0": "pen shade",
+                "category": ScratchBlocks.Categories.mod,
+                "colour": ScratchBlocks.Colours.mod.primary,
+                "colourSecondary": ScratchBlocks.Colours.mod.secondary,
+                "colourTertiary": ScratchBlocks.Colours.mod.tertiary,
+                "output": "String",
+                "outputShape": ScratchBlocks.OUTPUT_SHAPE_ROUND,
+                "checkboxInFlyout": false
+            });
+        }
+    };
+    
     var oParser = new DOMParser();
     var dom = oParser.parseFromString(ScratchBlocks.Blocks.defaultToolbox, 'text/xml');
     
