@@ -133,11 +133,11 @@ module.exports = function (vm) {
     
     ScratchBlocks.Colours.mod = new Object();
     
-    ScratchBlocks.Colours.mod.primary = "#D3D3D3";
+    ScratchBlocks.Colours.mod.primary = "#C0C0C0";
     
-    ScratchBlocks.Colours.mod.secondary = "#C0C0C0";
+    ScratchBlocks.Colours.mod.secondary = "#A9A9A9";
     
-    ScratchBlocks.Colours.mod.tertiary = "#A9A9A9";
+    ScratchBlocks.Colours.mod.tertiary = "#808080";
     
     ScratchBlocks.Blocks['mod_get_variable_by_name'] = {
         init: function() {
