@@ -14,6 +14,7 @@ const SpriteSelectorItem = props => (
                 [styles.isSelected]: props.selected
             }
         )}
+        width={this.props.width}
         onClick={props.onClick}
     >
         {props.costumeURL ? (
@@ -33,7 +34,11 @@ SpriteSelectorItem.propTypes = {
     costumeURL: React.PropTypes.string,
     name: React.PropTypes.string,
     onClick: React.PropTypes.func,
-    selected: React.PropTypes.bool
+    selected: React.PropTypes.bool,
+    width: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string
+    ])
 };
 
 module.exports = SpriteSelectorItem;
