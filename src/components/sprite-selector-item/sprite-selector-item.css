@@ -33,6 +33,8 @@
 .sprite-image {
     margin: auto;
     user-select: none;
+    height: 32px;
+    width: 32px;
 }
 
 .sprite-name {
