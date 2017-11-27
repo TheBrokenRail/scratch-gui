@@ -66,7 +66,7 @@ StageComponent.propTypes = {
     isColorPicking: PropTypes.bool,
     onDeactivateColorPicker: PropTypes.func,
     onQuestionAnswered: PropTypes.func,
-    question: PropTypes.string,
+    question: PropTypes.object,
     width: PropTypes.number
 };
 StageComponent.defaultProps = {
