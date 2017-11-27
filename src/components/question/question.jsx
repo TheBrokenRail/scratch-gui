@@ -21,7 +21,14 @@ const QuestionComponent = props => {
                     <Input
                         autoFocus
                         disabled={question.say}
-                        style{question.say ? styles.questionSay : null}
+                        style={question.say ? {
+							fontSize: '0.75rem',
+							fontWeight: 'bold',
+							fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+							backgroundColor: 'white',
+							color: '#575e75',
+							border: 'none'
+						} : null}
                         value={answer}
                         onChange={onChange}
                         onKeyPress={onKeyPress}
