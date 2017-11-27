@@ -39,7 +39,7 @@ class Question extends React.Component {
 
 Question.propTypes = {
     onQuestionAnswered: PropTypes.func.isRequired,
-    question: PropTypes.string
+    question: PropTypes.object
 };
 
 export default Question;
