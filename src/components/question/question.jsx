@@ -14,12 +14,14 @@ const QuestionComponent = props => {
     return (
         <div className={styles.questionWrapper}>
             <div className={styles.questionContainer}>
-                {question ? (
-                    <div className={styles.questionLabel}>{question}</div>
+                {question.text ? (
+                    <div className={styles.questionLabel}>{question.text}</div>
                 ) : null}
                 <div className={styles.questionInput}>
                     <Input
                         autoFocus
+                        disabled={question.say}
+                        style{question.say ? {color: 'black', backgroundColor: 'white'} : null}
                         value={answer}
                         onChange={onChange}
                         onKeyPress={onKeyPress}
@@ -41,7 +43,7 @@ QuestionComponent.propTypes = {
     onChange: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
     onKeyPress: PropTypes.func.isRequired,
-    question: PropTypes.string
+    question: PropTypes.object
 };
 
 export default QuestionComponent;
