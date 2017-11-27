@@ -89,7 +89,7 @@
     "scratch-paint": "latest",
     "scratch-render": "latest",
     "scratch-storage": "^0.3.0",
-    "scratch-vm": "latest",
+    "scratch-vm": "TheBrokenRail/scratch-vm#say-stage",
     "selenium-webdriver": "3.5.0",
     "startaudiocontext": "1.2.1",
     "style-loader": "^0.19.0",
