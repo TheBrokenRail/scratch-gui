@@ -25,14 +25,6 @@
     padding-bottom: $space;
 }
 
-.question-say {
-    font-size: 0.75rem;
-    font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: $text-primary;
-    background-color: 'white';
-}
-
 .question-input {
     display: flex; /* Keeps the input from going outside this container */
     position: relative;
