@@ -14,14 +14,14 @@ const QuestionComponent = props => {
     return (
         <div className={styles.questionWrapper}>
             <div className={styles.questionContainer}>
-                {question.text ? (
+                {question.wasVisible ? (
                     <div className={styles.questionLabel}>{question.text}</div>
                 ) : null}
                 <div className={styles.questionInput}>
                     <Input
                         autoFocus
                         disabled={question.say}
-                        style{question.say ? {color: 'black', backgroundColor: 'white'} : null}
+                        style{question.say ? styles.questionSay : null}
                         value={answer}
                         onChange={onChange}
                         onKeyPress={onKeyPress}
