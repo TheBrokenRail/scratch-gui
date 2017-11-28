@@ -180,6 +180,14 @@ const looks = function (isStage, targetId) {
         ${blockSeparator}
         `}
         ${isStage ? `
+            <block type="looks_say">
+                <value name="MESSAGE">
+                    <shadow type="text">
+                        <field name="TEXT">Hello!</field>
+                    </shadow>
+                </value>
+            </block>
+            ${blockSeparator}
             <block type="looks_switchbackdropto">
                 <value name="BACKDROP">
                     <shadow type="looks_backdrops"/>
