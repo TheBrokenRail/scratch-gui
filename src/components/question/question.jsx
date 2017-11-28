@@ -14,7 +14,7 @@ const QuestionComponent = props => {
     return (
         <div className={styles.questionWrapper}>
             <div className={styles.questionContainer}>
-                {question.wasVisible ? (
+                {!question.wasVisible && !question.say ? (
                     <div className={styles.questionLabel}>{question.text}</div>
                 ) : null}
                 <div className={styles.questionInput}>
@@ -29,7 +29,7 @@ const QuestionComponent = props => {
 							color: '#575e75',
 							border: 'none'
 						} : null}
-                        value={answer}
+                        value={question.say ? question.text : answer}
                         onChange={onChange}
                         onKeyPress={onKeyPress}
                     />
